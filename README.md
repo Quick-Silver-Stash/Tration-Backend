@@ -1,12 +1,21 @@
 # Tration-Backend
 Backend for Tration Application
 
-This is a temporary server used for testing in Express. We will update the server and backend as needed / decided in the process.
+This is now a API repo for Tration application
 
-## Development Set Up
-`git clone https://github.com/Quick-Silver-Stash/Tration-Backend.git`  
-`cd api`  
+# Dev Set Up
+`git pull https://github.com/Quick-Silver-Stash/Tration-Backend.git`  
+`cd Tration-Backend/functions`  
 `npm install`  
-`npm start`
 
-then, open `http://localhost:3000/` for the server
+# Dev
+go add your function to the directory `functions/index.js`
+
+I will investigate if we can separate out the API for auto deployment - and organize it in the way that makes sense.
+
+# Deploy
+`firebase deploy`
+
+will automatically deploy the function to firebase cloud. You can check the function deployed at:
+
+https://console.firebase.google.com/u/1/project/trationapp/functions/list

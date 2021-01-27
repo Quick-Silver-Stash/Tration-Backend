@@ -1,0 +1,20 @@
+{
+  "users": {
+    "userId": "string",
+    "email": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "quests": "string[]"
+  },
+  "quests": {
+    "questId": "string",
+    "title": "string",
+    "description": "string",
+    "questType": "string",
+    "questFrequency": "string",
+    "isComplete": "boolean",
+    "isActive": "boolean",
+    "createdOn": "Date",
+    "updatedOn": "Date"
+  }
+}

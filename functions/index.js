@@ -11,7 +11,6 @@ exports.register = functions.https.onRequest((request, response) => {
   const email = request.body.email;
   const password = request.body.password;
   const quests = [];
-  const notification = false;
 
   let authUser = admin
     .auth()
@@ -24,7 +23,6 @@ exports.register = functions.https.onRequest((request, response) => {
     })
     .then(function (userRecord) {
       let tempId = "users/" + userRecord.uid;
-      let sid = "settings/" + userRecord.uid;
       console.log("TempId: ", tempId);
       console.log(
         "Successfully created new user:",
@@ -34,10 +32,6 @@ exports.register = functions.https.onRequest((request, response) => {
         "email:",
         email
       );
-      // Add pushing notification
-      let sref = admin.database().ref(sid).set({
-        notification: notification,
-      });
       let newUserRef = admin.database().ref(tempId).set({
         email: email,
         firstName: firstName,

@@ -8,9 +8,9 @@ https://us-central1-trationapp.cloudfunctions.net/register
 
 #### Data
 {
-	"firstName" : "Eve",
-	"lastName" : "Hey",
-	"email" : "ehey@smu.edu",
+	"firstName" : "test",
+	"lastName" : "user",
+	"email" : "test.email@email.test",
 	"password" : "pass"
 }
 

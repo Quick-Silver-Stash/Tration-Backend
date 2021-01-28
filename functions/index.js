@@ -9,5 +9,5 @@ const login = require('./authentication/login');
 const logout = require('./authentication/logout');
 
 exports.register = register.register;
-exports.login = login.register;
-exports.logout = logout.register;
+exports.login = login.login;
+exports.logout = logout.logout;

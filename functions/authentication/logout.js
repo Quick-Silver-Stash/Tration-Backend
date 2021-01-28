@@ -1,8 +1,4 @@
 const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-const firebase = require("firebase");
-admin.initializeApp(functions.config().firebase);
-firebase.initializeApp(functions.config().firebase);
 
 // LOGOUT
 exports.logout = functions.https.onRequest((request, response) => {

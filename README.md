@@ -25,9 +25,29 @@ Then upgrade your billing plan. Don't worry you have 2,000,000 functions calls f
 
 ![Firebase Blaze](./meta/2_firebase_select_plan.PNG)
 # Dev
-go add your function to the directory `functions/index.js`
+go add your function to the directory `functions/{YOUR_API_DIR}/{YOUR_API}.js`
 
-I will investigate if we can separate out the API for auto deployment - and organize it in the way that makes sense.
+general function template should start
+
+```js
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+const firebase = require("firebase");
+admin.initializeApp(functions.config().firebase);
+firebase.initializeApp(functions.config().firebase);
+
+exports.function1 = functions.https.onRequest((request, response) => {
+    ...
+});
+```
+
+Then, add your function to index.js
+
+```js
+const function1 = require('./{YOUR_API_DIR}/function1');
+
+exports.function1 = function1.function1;
+```
 
 # Deploy
 `firebase deploy`
@@ -35,3 +55,7 @@ I will investigate if we can separate out the API for auto deployment - and orga
 will automatically deploy the function to firebase cloud. You can check the function deployed at:
 
 https://console.firebase.google.com/u/1/project/trationapp/functions/list
+
+# Reference
+There are more reference [here](https://firebase.google.com/docs/functions/get-started)
+Also, you can reference [here](https://firebase.google.com/docs/functions/organize-functions) for alternative organization of functions.

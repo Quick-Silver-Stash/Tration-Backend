@@ -5,7 +5,8 @@ var db = admin.database();
 
 // Add Quest
 exports.addQuest = functions.https.onRequest((req, res) => {
-  let newQuest = {
+  /*Need to figure out how to create a PK*/
+  admin.database().ref('Quest/1').set({
     title: req.body.title,
     description: req.body.description,
     questType: req.body.questType,
@@ -14,16 +15,16 @@ exports.addQuest = functions.https.onRequest((req, res) => {
     isActive: req.body.isActive,
     createdOn: req.body.createdOn,
     updatedOn: req.body.updatedOn
-  };
-
-  let newUserRef = admin.database().ref('quest/:qid').set({
-      newQuest
   })
-  .then(function(){
+  .then(function(questId){
     console.log("Successfully wrote quest ");
-    return res.status(200)
+    return res.status(200).json({
+      title: req.body.title,
+      description: req.body.description,
+    })
   })
   .catch(function(error){
+    console.log(error)
     return res.status(400).json(error)
   })
 });

@@ -5,8 +5,9 @@ var db = admin.database();
 
 // Add Quest
 exports.addQuest = functions.https.onRequest((req, res) => {
-  /*Need to figure out how to create a PK*/
-  admin.database().ref('Quest/1').set({
+  let ref = admin.database().ref('Quest');
+  let newRef = ref.push();
+  newRef.set({
     title: req.body.title,
     description: req.body.description,
     questType: req.body.questType,

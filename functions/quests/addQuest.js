@@ -1,7 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const firebase = require("firebase");
-var db = admin.database();
 
 // Add Quest
 exports.addQuest = functions.https.onRequest((req, res) => {
@@ -15,9 +14,10 @@ exports.addQuest = functions.https.onRequest((req, res) => {
     isComplete: req.body.isComplete,
     isActive: req.body.isActive,
     createdOn: req.body.createdOn,
-    updatedOn: req.body.updatedOn
+    updatedOn: req.body.updatedOn,
+    userId: req.body.userId
   })
-  .then(function(questId){
+  .then(function(){
     console.log("Successfully wrote quest ");
     return res.status(200).json({
       title: req.body.title,

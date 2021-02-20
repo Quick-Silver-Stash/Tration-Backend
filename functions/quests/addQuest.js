@@ -15,7 +15,7 @@ exports.addQuest = functions.https.onRequest((req, res) => {
     isActive: req.body.isActive,
     createdOn: req.body.createdOn,
     updatedOn: req.body.updatedOn,
-    userId: req.body.userId
+    userId: req.body.userId 
   })
   .then(function(){
     console.log("Successfully wrote quest ");

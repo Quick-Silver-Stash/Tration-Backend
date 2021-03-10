@@ -1,6 +1,5 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-const firebase = require("firebase");
 
 // REGISTER
 exports.register = functions.https.onRequest((request, response) => {
@@ -8,7 +7,6 @@ exports.register = functions.https.onRequest((request, response) => {
     const lastName = request.body.lastName;
     const email = request.body.email;
     const password = request.body.password;
-    const quests = [];
 
     let authUser = admin
         .auth()
@@ -16,8 +14,7 @@ exports.register = functions.https.onRequest((request, response) => {
             email: email,
             firstName: firstName,
             password: password,
-            lastName: lastName,
-            quests: quests,
+            lastName: lastName
         })
         .then(function (userRecord) {
             let tempId = "users/" + userRecord.uid;
@@ -30,7 +27,7 @@ exports.register = functions.https.onRequest((request, response) => {
                 "email:",
                 email
             );
-            let newUserRef = admin.database().ref(tempId).set({
+            let newUserRef = functions.firestore.document(tempId).set({
                 email: email,
                 firstName: firstName,
                 password: password,

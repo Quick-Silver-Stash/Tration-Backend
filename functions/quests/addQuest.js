@@ -4,24 +4,25 @@ const firebase = require("firebase");
 
 // Add Quest
 exports.addQuest = functions.https.onRequest((req, res) => {
-  let ref = admin.database().ref('Quest');
+  let ref = admin.database().ref('/quests');
   let newRef = ref.push();
-  newRef.set({
-    title: req.body.title,
-    description: req.body.description,
-    questType: req.body.questType,
-    questFrequency: req.body.questFrequency,
-    isComplete: req.body.isComplete,
-    isActive: req.body.isActive,
-    createdOn: req.body.createdOn,
-    updatedOn: req.body.updatedOn,
-    userId: req.body.userId 
+  const refKey = newRef.key;
+  admin.database().ref("quests/" + refKey).set({
+    title: req.body.data.title,
+    description: req.body.data.description,
+    questType: req.body.data.questType,
+    questFrequency: req.body.data.questFrequency,
+    isComplete: req.body.data.isComplete,
+    isActive: req.body.data.isActive,
+    createdOn: req.body.data.createdOn,
+    updatedOn: req.body.data.updatedOn,
+    userId: req.body.data.userId
   })
   .then(function(){
     console.log("Successfully wrote quest ");
     return res.status(200).json({
-      title: req.body.title,
-      description: req.body.description,
+      title: req.body.data.title,
+      description: req.body.data.description,
     })
   })
   .catch(function(error){

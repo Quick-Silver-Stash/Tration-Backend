@@ -4,8 +4,8 @@ const firebase = require("firebase");
 
 // LOGIN
 exports.login = functions.https.onRequest((request, response) => {
-    const email = request.body.email;
-    const password = request.body.password;
+    const email = request.body.data.email;
+    const password = request.body.data.password;
 
     firebase
         .auth()

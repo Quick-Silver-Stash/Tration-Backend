@@ -3,10 +3,10 @@ const admin = require("firebase-admin");
 
 // REGISTER
 exports.register = functions.https.onRequest((request, response) => {
-    const firstName = request.body.firstName;
-    const lastName = request.body.lastName;
-    const email = request.body.email;
-    const password = request.body.password;
+    const firstName = request.body.data.firstName;
+    const lastName = request.body.data.lastName;
+    const email = request.body.data.email;
+    const password = request.body.data.password;
 
     let authUser = admin
         .auth()

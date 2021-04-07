@@ -8,10 +8,8 @@ const register = require('./authentication/register');
 const login = require('./authentication/login');
 const logout = require('./authentication/logout');
 const addQuest = require('./quests/addQuest');
-const test = require('./authentication/test');
 
 exports.register = register.register;
 exports.login = login.login;
 exports.logout = logout.logout;
 exports.addQuest = addQuest.addQuest;
-exports.test = test.test;

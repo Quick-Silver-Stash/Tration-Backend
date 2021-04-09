@@ -1,6 +1,6 @@
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-const firebase = require("firebase");
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+const firebase = require('firebase');
 
 // LOGOUT
 exports.logout = functions.https.onRequest((request, response) => {
@@ -11,23 +11,23 @@ exports.logout = functions.https.onRequest((request, response) => {
                 .auth()
                 .signOut()
                 .then(function () {
-                    console.log("You are signed out!");
+                    console.log('You are signed out!');
                     response.status(200).end();
                     return response.json();
                 })
                 .catch(function (error) {
                     console.log(
-                        "Error Logging out ",
-                        "Error Code: ",
+                        'Error Logging out ',
+                        'Error Code: ',
                         error.code,
-                        "Error Message: ",
+                        'Error Message: ',
                         error.message
                     );
                     response.status(400).end();
                     return response.json();
                 });
         } else {
-            console.log("No Current User");
+            console.log('No Current User');
             response.status(200).end();
             return response.json();
         }

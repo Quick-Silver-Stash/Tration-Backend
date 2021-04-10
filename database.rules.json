@@ -1,6 +1,13 @@
 {
   "rules": {
     ".read": true,
-    ".write": true
+    ".write": true,
+
+    "quests": {
+      "$uid": {
+        ".write": "auth.uid == $uid"
+      }
+    }
+    
   }
 }

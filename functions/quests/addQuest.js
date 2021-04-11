@@ -4,12 +4,18 @@ const firebase = require('firebase');
 
 // Add Quest
 exports.addQuest = functions.https.onRequest((req, res) => {
-    let ref = admin.database().ref('/quests');
+    // Get the logged in user
+    let user = firebase.auth().currentUser;
+    if (user != null) let userKey = user.uid + '/';
+    // access the user you want to write the quest to
+    let ref = admin.database().ref('/quests/' + userKey);
+    // Create entry of new quest
     let newRef = ref.push();
     const refKey = newRef.key;
+    const questRef = 'quests/' + userKey + refKey;
     admin
         .database()
-        .ref('quests/' + refKey)
+        .ref(questRef)
         .set({
             title: req.body.data.title,
             description: req.body.data.description,
@@ -18,8 +24,7 @@ exports.addQuest = functions.https.onRequest((req, res) => {
             isComplete: req.body.data.isComplete,
             isActive: req.body.data.isActive,
             createdOn: req.body.data.createdOn,
-            updatedOn: req.body.data.updatedOn,
-            userId: req.body.data.userId,
+            updatedOn: req.body.data.updatedOn
         })
         .then(function () {
             console.log('Successfully wrote quest ');

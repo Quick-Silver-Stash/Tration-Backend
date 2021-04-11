@@ -1,20 +1,24 @@
 {
   "users": {
-    "userId": "string",
-    "email": "string",
-    "firstName": "string",
-    "lastName": "string",
-    "quests": "string[]"
+    "userId": {
+      "username": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "password": "string"
+    }
   },
   "quests": {
-    "questId": "string",
-    "title": "string",
-    "description": "string",
-    "questType": "string",
-    "questFrequency": "string",
-    "isComplete": "boolean",
-    "isActive": "boolean",
-    "createdOn": "Date",
-    "updatedOn": "Date"
+    "userId": {
+      "questId": {
+        "title": "string",
+        "description": "string",
+        "questType": "string",
+        "questFrequency": "string",
+        "isComplete": "boolean",
+        "isActive": "boolean",
+        "createdOn": "Date",
+        "updatedOn": "Date"
+      }
+    }
   }
 }
